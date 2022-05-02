@@ -5,5 +5,5 @@
 2. Launch one **EC2** instance, using the following `user data` command, and open 80 port from the `security group`.
 ```
 #include
-https://raw.githubusercontent.com/kmu-bigdata/architect-cloud/master/sample-application/flask-inference/start.sh
+https://raw.githubusercontent.com/hyoonseo159357/architect-cloud/master/sample-application/flask-inference/start.sh
 ```
