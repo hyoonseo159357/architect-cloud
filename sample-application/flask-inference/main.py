@@ -46,7 +46,7 @@ def get_instance_info():
         geo_region_name = geo_json['region']
         geo_lat_lon = f"{geo_json['latitude']} / {geo_json['longitude']}"
 	
-	geo_info = requests.get('https://ipinfo.io/json')
+	geo_info = requests.get('https//ipinfo.io/json')
 	geo_json = json.loads(geo_info.text)
 	geo_time_zone = geo_json['timezone']
 
