@@ -37,6 +37,7 @@ def get_instance_info():
         avail_zone = requests.get("http://169.254.169.254/latest/meta-data/placement/availability-zone", timeout=2).text
 
         geo_info = requests.get('https://freegeoip.app/json')
+	geo_info = requests.get('https://ipinfo.io/json')
         geo_json = json.loads(geo_info.text)
 
         geo_ip = geo_json['ip']
