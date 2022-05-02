@@ -5,7 +5,7 @@ sudo yum install python3-pip -y
 sudo pip3 install virtualenv
 
 cd /home/ec2-user/
-git clone https://github.com/kmu-bigdata/architect-cloud.git
+git clone https://github.com/hyoonseo159357/architect-cloud.git
 cd architect-cloud/sample-application/flask-inference/
 mkdir -p static/uploads
 
