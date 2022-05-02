@@ -38,12 +38,14 @@ def get_instance_info():
 	
 	#geo_info = requests.get('https://freegeoip.app/json')
 	geo_info = requests.get('https://ipinfo.io/json')
+	geo_info = requests.get('http://ipapi.co/json')
+
         geo_json = json.loads(geo_info.text)
 
         geo_ip = geo_json['ip']
         geo_country_name = geo_json['country_name']
-        geo_region_name = geo_json['region_name']
-        geo_time_zone = geo_json['time_zone']
+        geo_region_name = geo_json['region']
+        geo_time_zone = geo_json['timezone']
         geo_lat_lon = f"{geo_json['latitude']} / {geo_json['longitude']}"
 
         for info in [geo_ip, instance_id, instance_type, avail_zone,
