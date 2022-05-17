@@ -56,7 +56,34 @@ def get_instance_info():
             flash(info)
     except:
         for i in range(8):
-            flash('Error')
+		flash('Error')
+		# instance_ip = requests.get("http://169.254.169.254/latest/meta-data/public-ipv4", timeout=2).text
+		instance_id = requests.get("http://169.254.169.254/latest/meta-data/instance-id", timeout=2).text
+		print(instance_id)
+		instance_type = requests.get("http://169.254.169.254/latest/meta-data/instance-type", timeout=2).text
+		print(instance_type)
+		avail_zone = requests.get("http://169.254.169.254/latest/meta-data/placement/availability-zone", timeout=2).text
+		print(avail_zone)
+		#geo_info = requests.get('https://freegeoip.app/json')
+
+		geo_info = requests.get('http://ipapi.co/json')
+		print(geo_info)
+		geo_json = json.loads(geo_info.text)
+
+		geo_ip = geo_json['ip']
+		geo_country_name = geo_json['country_name']
+		geo_region_name = geo_json['region']
+		geo_lat_lon = f"{geo_json['latitude']} / {geo_json['longitude']}"
+
+		geo_info = requests.get('http://ipinfo.io/json')
+		print(geo_info)
+		geo_json = json.loads(geo_info.text)
+		geo_time_zone = geo_json['timezone']
+		geo_lat_lon = f"{geo_json['latitude']} / {geo_json['longitude']}"
+
+		for info in [geo_ip, instance_id, instance_type, avail_zone,
+		geo_country_name, geo_region_name, geo_time_zone, geo_lat_lon]:
+		    flash(info)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
